@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { IProduct } from './catalog.model';
-import {CurrencyPipe} from '@angular/common';
+import { ProductDetails } from '../product-details/product-details';
 
 @Component({
   selector: 'app-catalog',
-  imports: [CurrencyPipe],
+  imports: [ProductDetails],
   templateUrl: './catalog.html',
   styleUrl: './catalog.css',
 })
@@ -192,12 +192,7 @@ export class Catalog {
     ];
   }
 
-  getImageUrl(product: IProduct): string {
-    if (!product) return '';
-
-    return `/assets/images/robot-parts/${product.imageName}`;
-  }
-
+  
   getFilteredProducts() {
     return this.filter === '' ? this.products : this.products.filter((product: any) => product.category === this.filter);
   }
